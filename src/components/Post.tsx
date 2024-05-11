@@ -31,47 +31,47 @@ interface PostProps {
 
 export function Post({ post }: PostProps){
 
-const [comments, setComments] = useState([
-  'Rapaz, ta toop, so tem você aqui ein!?'
-])
+  const [comments, setComments] = useState([
+    'Rapaz, ta toop, so tem você aqui ein!?'
+  ])
 
-const [newCommentText, setNewCommentText] = useState('')
+  const [newCommentText, setNewCommentText] = useState('')
 
-function handleNewCommentChange(event: ChangeEvent<HTMLTextAreaElement>){
-  event.target.setCustomValidity('')
-  setNewCommentText(event.target.value)
-}
+  function handleNewCommentChange(event: ChangeEvent<HTMLTextAreaElement>){
+    event.target.setCustomValidity('')
+    setNewCommentText(event.target.value)
+  }
 
-const publishedAtDateFormatted = format(post.publishedAt, "dd 'de' LLLL 'ás' HH:mm'h'", {
-  locale: ptBR
-})
-
-const publishedDateRelativeToNow = formatDistanceToNow(post.publishedAt, {
-  locale: ptBR,
-  addSuffix: true
-})
-
-function handleCreateNewComment(event:FormEvent){
-  event.preventDefault()
-
-  setComments([...comments, newCommentText]);
-  setNewCommentText('')
-}
-
-function deleteComment(commentToDelete: string){
-  const commentWithOutDeletedOne = comments.filter(comment => {
-    return comment !== commentToDelete
+  const publishedAtDateFormatted = format(post.publishedAt, "dd 'de' LLLL 'ás' HH:mm'h'", {
+    locale: ptBR
   })
 
-  setComments(commentWithOutDeletedOne);
-}
+  const publishedDateRelativeToNow = formatDistanceToNow(post.publishedAt, {
+    locale: ptBR,
+    addSuffix: true
+  })
 
-function handleNewCommentInvalid(event: InvalidEvent<HTMLTextAreaElement>){
-  event.target.setCustomValidity('Este Campo é Obrigatorio!')
-  console.log(event)
-}
+  function handleCreateNewComment(event:FormEvent){
+    event.preventDefault()
 
-const isNewCommentEmpty = newCommentText.length === 0
+    setComments([...comments, newCommentText]);
+    setNewCommentText('')
+  }
+
+  function deleteComment(commentToDelete: string){
+    const commentWithOutDeletedOne = comments.filter(comment => {
+      return comment !== commentToDelete
+    })
+
+    setComments(commentWithOutDeletedOne);
+  }
+
+  function handleNewCommentInvalid(event: InvalidEvent<HTMLTextAreaElement>){
+    event.target.setCustomValidity('Este Campo é Obrigatorio!')
+    console.log(event)
+  }
+
+  const isNewCommentEmpty = newCommentText.length === 0
 
   return(
     <article className={styles.post}>
