@@ -4,7 +4,7 @@ Este é um aplicativo de feed desenvolvido em ReactJS com TypeScript e Vite, per
 
 ## Autor
 
-Este projeto foi desenvolvido por **João Victor Chaves**.
+Este projeto foi desenvolvido por **João Victor Chaves**, como parte do curso da Rocketseat.
 
 ## Configuração
 
