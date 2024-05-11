@@ -1,30 +1,27 @@
-# React + TypeScript + Vite
+# Chaves Feed (ReactJS + TypeScript + Vite)
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Este é um aplicativo de feed desenvolvido em ReactJS com TypeScript e Vite, permitindo aos usuários visualizar e interagir com vários posts, incluindo a capacidade de adicionar comentários, aplaudir e excluir comentários.
 
-Currently, two official plugins are available:
+## Autor
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+Este projeto foi desenvolvido por **João Victor Chaves**.
 
-## Expanding the ESLint configuration
+## Configuração
 
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
+Para configurar o projeto localmente, siga estas etapas:
 
-- Configure the top-level `parserOptions` property like this:
+1. Certifique-se de ter o Node.js instalado em sua máquina.
+2. Clone este repositório para o seu ambiente local.
+3. Navegue até o diretório clonado usando o terminal.
+4. Execute o seguinte comando para instalar todas as dependências necessárias:
 
-```js
-export default {
-  // other rules...
-  parserOptions: {
-    ecmaVersion: 'latest',
-    sourceType: 'module',
-    project: ['./tsconfig.json', './tsconfig.node.json'],
-    tsconfigRootDir: __dirname,
-  },
-}
-```
+    ```bash
+    npm install
+    ```
 
-- Replace `plugin:@typescript-eslint/recommended` to `plugin:@typescript-eslint/recommended-type-checked` or `plugin:@typescript-eslint/strict-type-checked`
-- Optionally add `plugin:@typescript-eslint/stylistic-type-checked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and add `plugin:react/recommended` & `plugin:react/jsx-runtime` to the `extends` list
+## Executando o aplicativo
+
+Após a instalação das dependências, você pode executar o aplicativo localmente. Use o seguinte comando:
+
+```bash
+npm run dev

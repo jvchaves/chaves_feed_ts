@@ -1,5 +1,4 @@
 import { format, formatDistanceToNow } from 'date-fns'
-import ptBR from 'date-fns/locale/pt-BR'
 
 import { Avatar } from './Avatar';
 import { Comment } from './Comment';
@@ -42,12 +41,9 @@ export function Post({ post }: PostProps){
     setNewCommentText(event.target.value)
   }
 
-  const publishedAtDateFormatted = format(post.publishedAt, "dd 'de' LLLL 'ás' HH:mm'h'", {
-    locale: ptBR
-  })
+  const publishedAtDateFormatted = format(post.publishedAt, "dd 'de' LLLL 'ás' HH:mm'h'")
 
   const publishedDateRelativeToNow = formatDistanceToNow(post.publishedAt, {
-    locale: ptBR,
     addSuffix: true
   })
 
