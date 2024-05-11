@@ -3,7 +3,7 @@ import ptBR from 'date-fns/locale/pt-BR'
 
 import { Avatar } from './Avatar';
 import { Comment } from './Comment';
-import { useState } from 'react';
+import { FormEvent, useState, ChangeEvent, InvalidEvent } from 'react';
 
 import styles from './Post.module.css';
 
@@ -13,10 +13,15 @@ interface Author {
   role: string;
 }
 
+interface Content {
+  type: 'paragraph' | 'link';
+  content: string;
+}
+
 interface PostProps {
   author: Author;
   publishedAt: Date;
-  content: string;
+  content: Content;
 }
 
 export function Post({ author, publishedAt, content}: PostProps){
@@ -27,7 +32,7 @@ const [comments, setComments] = useState([
 
 const [newCommentText, setNewCommentText] = useState('')
 
-function handleNewCommentChange(){
+function handleNewCommentChange(event: ChangeEvent<HTMLTextAreaElement>){
   event.target.setCustomValidity('')
   setNewCommentText(event.target.value)
 }
@@ -41,16 +46,14 @@ const publishedDateRelativeToNow = formatDistanceToNow(publishedAt, {
   addSuffix: true
 })
 
-function handleCreateNewComment(){
+function handleCreateNewComment(event:FormEvent){
   event.preventDefault()
-  
-  const newCommentText = event.target.comment.value
 
   setComments([...comments, newCommentText]);
   setNewCommentText('')
 }
 
-function deleteComment(commentToDelete){
+function deleteComment(commentToDelete: string){
   const commentWithOutDeletedOne = comments.filter(comment => {
     return comment !== commentToDelete
   })
@@ -58,7 +61,7 @@ function deleteComment(commentToDelete){
   setComments(commentWithOutDeletedOne);
 }
 
-function handleNewCommentInvalid(){
+function handleNewCommentInvalid(event: InvalidEvent<HTMLTextAreaElement>){
   event.target.setCustomValidity('Este Campo é Obrigatorio!')
   console.log(event)
 }
